@@ -20,6 +20,10 @@ namespace CCG
         }
         #endregion
 
+        #region constants
+        private const float MOVE_SPEED = 0.01f;
+        #endregion
+
         #region properties
         public int HP { get; private set; }
         #endregion
@@ -84,7 +88,7 @@ namespace CCG
 
         private void OnActionStateRightMove()
         {
-            var x = (transform.position.x + 0.1f);
+            var x = (transform.position.x + MOVE_SPEED);
             SetPosition(x, transform.position.y);
 
             AddReward(0.01f);
@@ -92,7 +96,7 @@ namespace CCG
 
         private void OnActionStateLeftMove()
         {
-            var x = (transform.position.x - 0.1f);
+            var x = (transform.position.x - MOVE_SPEED);
             SetPosition(x, transform.position.y);
 
             AddReward(-0.01f);
