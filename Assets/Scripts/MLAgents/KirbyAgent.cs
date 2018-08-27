@@ -47,7 +47,7 @@ namespace CCG
         public override void AgentReset()
         {
             HP = 1;
-            transform.position = Global.Stage.StartPos;
+            //transform.position = Global.Stage.StartPos;
         }
 
         public override void CollectObservations()
