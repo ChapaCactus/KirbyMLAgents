@@ -99,7 +99,7 @@ namespace CCG
             var x = (transform.position.x - MOVE_SPEED);
             SetPosition(x, transform.position.y);
 
-            AddReward(-0.01f);
+            AddReward(0.01f);
         }
 
         private void CheckHP(Action onDead)
