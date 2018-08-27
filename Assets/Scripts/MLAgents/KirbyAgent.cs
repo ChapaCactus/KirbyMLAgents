@@ -22,7 +22,7 @@ namespace CCG
 
         public override void AgentReset()
         {
-            base.AgentReset();
+            transform.position = Global.Stage.StartPos;
         }
 
         public override void CollectObservations()
