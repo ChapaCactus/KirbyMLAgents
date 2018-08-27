@@ -12,17 +12,14 @@ namespace CCG
         #region public methods
         public override void InitializeAcademy()
         {
-            base.InitializeAcademy();
         }
 
         public override void AcademyReset()
         {
-            base.AcademyReset();
         }
 
         public override void AcademyStep()
         {
-            base.AcademyStep();
         }
         #endregion
     }
