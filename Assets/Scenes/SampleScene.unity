@@ -405,6 +405,7 @@ GameObject:
   m_Component:
   - component: {fileID: 369792911}
   - component: {fileID: 369792912}
+  - component: {fileID: 369792913}
   m_Layer: 0
   m_Name: KirbyBrain
   m_TagString: Untagged
@@ -444,9 +445,20 @@ MonoBehaviour:
     vectorActionDescriptions: []
     vectorActionSpaceType: 0
     vectorObservationSpaceType: 1
-  brainType: 0
+  brainType: 3
   CoreBrains: []
   instanceID: 0
+--- !u!114 &369792913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 369792910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8abb13d01924941adba7b3d27ebc4126, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0

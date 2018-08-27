@@ -52,6 +52,7 @@ namespace CCG
 
         public override void CollectObservations()
         {
+            AddVectorObs(GetActionTypeSize());
         }
 
         public override void InitializeAgent()
@@ -116,6 +117,14 @@ namespace CCG
         private ActionType ConvertIntToActionType(int typeInt)
         {
             return (ActionType)typeInt;
+        }
+
+        /// <summary>
+        /// ActionTypeの要素数取得
+        /// </summary>
+        private int GetActionTypeSize()
+        {
+            return Enum.GetValues(typeof(ActionType)).Length;
         }
         #endregion
     }
