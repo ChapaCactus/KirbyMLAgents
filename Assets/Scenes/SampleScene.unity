@@ -258,7 +258,7 @@ MonoBehaviour:
   brain: {fileID: 369792912}
   agentParameters:
     agentCameras: []
-    maxStep: 0
+    maxStep: 500
     resetOnDone: 1
     onDemandDecision: 0
     numberOfActionsBetweenDecisions: 1
@@ -445,7 +445,7 @@ MonoBehaviour:
     vectorActionDescriptions: []
     vectorActionSpaceType: 0
     vectorObservationSpaceType: 1
-  brainType: 3
+  brainType: 1
   CoreBrains: []
   instanceID: 0
 --- !u!114 &369792913
@@ -664,7 +664,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 889700e56be124a3a8ce34e40ecefde3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSteps: 0
+  maxSteps: 500
   trainingConfiguration:
     width: 80
     height: 80
