@@ -24,6 +24,11 @@ namespace CCG
         private const float MOVE_SPEED = 0.01f;
         #endregion
 
+        #region variables
+        [SerializeField]
+        private SpriteRenderer mainRenderer = null;
+        #endregion
+
         #region properties
         public int HP { get; private set; }
         #endregion
@@ -92,6 +97,7 @@ namespace CCG
             var x = (transform.position.x + MOVE_SPEED);
             SetPosition(x, transform.position.y);
 
+            mainRenderer.flipX = true;
             AddReward(0.01f);
         }
 
@@ -100,6 +106,7 @@ namespace CCG
             var x = (transform.position.x - MOVE_SPEED);
             SetPosition(x, transform.position.y);
 
+            mainRenderer.flipX = false;
             AddReward(0.01f);
         }
 

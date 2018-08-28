@@ -262,6 +262,7 @@ MonoBehaviour:
     resetOnDone: 1
     onDemandDecision: 0
     numberOfActionsBetweenDecisions: 1
+  mainRenderer: {fileID: 259738951}
 --- !u!4 &152325007
 Transform:
   m_ObjectHideFlags: 0
