@@ -17,7 +17,7 @@ namespace CCG
             bool done,
             List<float> memory)
         {
-            return new float[1] { UnityEngine.Random.Range(0, 3) };
+            return new float[1] { UnityEngine.Random.Range(0, 4) };
         }
 
         public List<float> MakeMemory(
