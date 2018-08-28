@@ -7,7 +7,7 @@ using MLAgents;
 
 namespace CCG
 {
-    public class Goal : MonoBehaviour
+    public class Enemy : MonoBehaviour
     {
         #region constants
         private const string TARGET_TAG = "Agent";
@@ -16,11 +16,11 @@ namespace CCG
         #region unity callbacks
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if(collision.CompareTag(TARGET_TAG))
+            if (collision.CompareTag(TARGET_TAG))
             {
                 // GOAL!
                 var agent = collision.GetComponent<Agent>();
-                agent.AddReward(1f);
+                agent.AddReward(-1f);
                 agent.Done();
             }
         }

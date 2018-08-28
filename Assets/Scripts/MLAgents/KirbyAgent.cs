@@ -168,8 +168,6 @@ namespace CCG
             rigid2D.AddForce(new Vector2(2f, 6f), ForceMode2D.Impulse);
             mainRenderer.flipX = true;
 
-            AddReward(-0.01f);
-
             OnJump();
         }
 
@@ -178,8 +176,6 @@ namespace CCG
             IsGrounded = false;
             rigid2D.AddForce(new Vector2(-2f, 6f), ForceMode2D.Impulse);
             mainRenderer.flipX = false;
-
-            AddReward(-0.01f);
 
             OnJump();
         }
