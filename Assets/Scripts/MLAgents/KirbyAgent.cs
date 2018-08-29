@@ -12,11 +12,11 @@ namespace CCG
         #region enums
         public enum ActionType
         {
-            RightMove,
-            LeftMove,
+            RightMove = 0,
+            LeftMove = 1,
 
-            RightJump,
-            LeftJump,
+            RightJump = 2,
+            LeftJump = 3,
         }
 
         public enum DirectionType

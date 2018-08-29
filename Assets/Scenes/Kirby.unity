@@ -371,7 +371,7 @@ MonoBehaviour:
   brain: {fileID: 369792912}
   agentParameters:
     agentCameras:
-    - {fileID: 519420031}
+    - {fileID: 0}
     maxStep: 0
     resetOnDone: 1
     onDemandDecision: 0
@@ -570,13 +570,16 @@ MonoBehaviour:
   brainParameters:
     vectorObservationSize: 1
     numStackedVectorObservations: 1
-    vectorActionSize: 1
+    vectorActionSize: 4
     cameraResolutions: []
     vectorActionDescriptions:
-    - 
+    - RightMove
+    - LeftMove
+    - RightJump
+    - LeftJump
     vectorActionSpaceType: 0
     vectorObservationSpaceType: 1
-  brainType: 3
+  brainType: 2
   CoreBrains:
   - {fileID: 691672818}
   - {fileID: 841987342}
@@ -820,8 +823,16 @@ MonoBehaviour:
   broadcast: 1
   keyContinuousPlayerActions: []
   axisContinuousPlayerActions: []
-  discretePlayerActions: []
-  defaultAction: 0
+  discretePlayerActions:
+  - key: 100
+    value: 0
+  - key: 97
+    value: 1
+  - key: 101
+    value: 2
+  - key: 113
+    value: 3
+  defaultAction: -1
   brain: {fileID: 369792912}
 --- !u!114 &841987342
 MonoBehaviour:
@@ -976,7 +987,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 889700e56be124a3a8ce34e40ecefde3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSteps: 30000
+  maxSteps: 0
   trainingConfiguration:
     width: 300
     height: 300
@@ -1017,7 +1028,7 @@ MonoBehaviour:
   m_Name: (Clone)(Clone)(Clone)(Clone)(Clone)
   m_EditorClassIdentifier: 
   broadcast: 1
-  graphModel: {fileID: 4900000, guid: adbe37e60a52b4900bdfda15c249c6d4, type: 3}
+  graphModel: {fileID: 0}
   graphScope: 
   graphPlaceholders: []
   BatchSizePlaceholderName: batch_size
