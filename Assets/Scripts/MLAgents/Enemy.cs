@@ -18,10 +18,10 @@ namespace CCG
         {
             if (collision.CompareTag(TARGET_TAG))
             {
-                // GOAL!
+                // 敵と接触
                 var agent = collision.GetComponent<Agent>();
                 agent.AddReward(-1f);
-                agent.Done();
+                agent.AgentReset();
             }
         }
         #endregion

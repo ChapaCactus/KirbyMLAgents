@@ -137,7 +137,7 @@ namespace CCG
 
         private void OnActionStateNone()
         {
-            AddReward(-0.01f);
+            AddReward(-0.001f);
         }
 
         private void OnActionStateRightMove()
@@ -148,7 +148,7 @@ namespace CCG
             Direction = DirectionType.Right;
             mainRenderer.flipX = true;
 
-            AddReward(0.01f);
+            AddReward(-0.001f);
         }
 
         private void OnActionStateLeftMove()
@@ -159,7 +159,7 @@ namespace CCG
             Direction = DirectionType.Left;
             mainRenderer.flipX = false;
 
-            AddReward(-0.01f);
+            AddReward(-0.001f);
         }
 
         private void OnActionStateRightJump()
@@ -167,6 +167,8 @@ namespace CCG
             IsGrounded = false;
             rigid2D.AddForce(new Vector2(2f, 6f), ForceMode2D.Impulse);
             mainRenderer.flipX = true;
+
+            AddReward(-0.001f);
 
             OnJump();
         }
@@ -176,6 +178,8 @@ namespace CCG
             IsGrounded = false;
             rigid2D.AddForce(new Vector2(-2f, 6f), ForceMode2D.Impulse);
             mainRenderer.flipX = false;
+
+            AddReward(-0.001f);
 
             OnJump();
         }
