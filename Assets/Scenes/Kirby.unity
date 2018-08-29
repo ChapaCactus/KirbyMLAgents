@@ -238,7 +238,7 @@ GameObject:
   - component: {fileID: 138372671}
   - component: {fileID: 138372670}
   m_Layer: 0
-  m_Name: Goal
+  m_Name: WarpStar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -315,8 +315,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: b05186e2b52eb48f28af333b4b45cd67, type: 3}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 2bd95bd1c25a74aef9b10db7f0969da4, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -576,7 +576,7 @@ MonoBehaviour:
     - 
     vectorActionSpaceType: 0
     vectorObservationSpaceType: 1
-  brainType: 1
+  brainType: 3
   CoreBrains:
   - {fileID: 691672818}
   - {fileID: 841987342}
