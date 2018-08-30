@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Agent
+  - Block
+  - Goal
+  - Enemy
   layers:
   - Default
   - TransparentFX

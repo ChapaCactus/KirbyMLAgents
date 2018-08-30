@@ -7,6 +7,7 @@ using MLAgents;
 
 namespace CCG
 {
+    [RequireComponent(typeof(RayPerception))]
     public class KirbyAgent : Agent
     {
         #region enums
@@ -48,6 +49,8 @@ namespace CCG
 
         public float JumpCooltime { get; private set; }
         public bool IsGrounded { get; private set; }
+
+        private RayPerception RayPerception { get; set; }
         #endregion
 
         #region public methods
@@ -60,6 +63,8 @@ namespace CCG
 
             var actionType = ConvertIntToActionType((int)vectorAction[0]);
             Action(actionType);
+
+            AddReward(-0.0005f);
         }
 
         public override void AgentOnDone()
@@ -76,11 +81,17 @@ namespace CCG
 
         public override void CollectObservations()
         {
-            AddVectorObs(GetActionTypeSize());
+            var rayDistance = 2.0f;
+            float[] rayAngles = { 90f, 180f };
+            var detectableObjects = new[] { "Block", "Goal", "Enemy" };
+
+            AddVectorObs(RayPerception.Perceive(rayDistance, rayAngles
+                                                , detectableObjects, 0, 0));
         }
 
         public override void InitializeAgent()
         {
+            RayPerception = GetComponent<RayPerception>();
         }
 
         public void SetPosition(float x, float y)

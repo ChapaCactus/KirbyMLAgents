@@ -20,7 +20,7 @@ namespace CCG
             {
                 // 敵と接触
                 var agent = collision.GetComponent<Agent>();
-                agent.AddReward(-1f);
+                agent.AddReward(-1.0f);
                 agent.AgentReset();
             }
         }
