@@ -65,6 +65,7 @@ namespace CCG
 
             CheckHP(onDead: () =>
             {
+                AddReward(-10);
                 Done();
                 return;
             });
@@ -72,6 +73,7 @@ namespace CCG
             var actionType = ConvertIntToActionType((int)vectorAction[0]);
             Action(actionType);
 
+            // 行動終了毎に負の報酬を与える
             AddReward(-0.0005f);
         }
 
