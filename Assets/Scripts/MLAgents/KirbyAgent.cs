@@ -58,6 +58,7 @@ namespace CCG
         {
             if(transform.position.y <= DEAD_Y_POSITION)
             {
+                AddReward(-10f);
                 Done();
                 return;
             }
