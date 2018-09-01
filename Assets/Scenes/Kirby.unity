@@ -644,7 +644,7 @@ MonoBehaviour:
     - LeftJump
     vectorActionSpaceType: 0
     vectorObservationSpaceType: 1
-  brainType: 1
+  brainType: 2
   CoreBrains:
   - {fileID: 1890998045}
   - {fileID: 101366063}

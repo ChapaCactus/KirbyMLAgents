@@ -74,7 +74,7 @@ namespace CCG
             Action(actionType);
 
             // 行動終了毎に負の報酬を与える
-            AddReward(-0.0005f);
+            AddReward(-0.0001f);
         }
 
         public override void AgentOnDone()
