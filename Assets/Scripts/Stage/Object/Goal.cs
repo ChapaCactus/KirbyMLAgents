@@ -20,7 +20,7 @@ namespace CCG
             {
                 // GOAL!
                 var agent = collision.GetComponent<Agent>();
-                agent.AddReward(1.0f);
+                agent.AddReward(1000.0f);
                 agent.Done();
             }
         }
