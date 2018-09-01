@@ -89,8 +89,8 @@ namespace CCG
 
         public override void CollectObservations()
         {
-            var rayDistance = 2.0f;
-            float[] rayAngles = { 90f, 180f };
+            var rayDistance = 1.5f;
+            float[] rayAngles = { 180f, 360f };
             var detectableObjects = new[] { "Block", "Goal", "Enemy" };
 
             AddVectorObs(RayPerception.Perceive(rayDistance, rayAngles
