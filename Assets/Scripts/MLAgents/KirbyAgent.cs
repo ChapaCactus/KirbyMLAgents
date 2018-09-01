@@ -7,6 +7,7 @@ using MLAgents;
 
 namespace CCG
 {
+    [RequireComponent(typeof(Rigidbody2D))]
     [RequireComponent(typeof(RayPerception))]
     public class KirbyAgent : Agent
     {
@@ -29,14 +30,12 @@ namespace CCG
 
         #region constants
         private const float MOVE_SPEED = 0.02f;
+        private const float DEAD_Y_POSITION = -5f;
         #endregion
 
         #region variables
         [SerializeField]
         private SpriteRenderer mainRenderer = null;
-
-        [SerializeField]
-        private Rigidbody2D rigid2D = null;
 
         [SerializeField]
         private ContactFilter2D groundContact = default(ContactFilter2D);
@@ -50,15 +49,23 @@ namespace CCG
         public float JumpCooltime { get; private set; }
         public bool IsGrounded { get; private set; }
 
+        private Rigidbody2D Rigidbody2D { get; set; }
         private RayPerception RayPerception { get; set; }
         #endregion
 
         #region public methods
         public override void AgentAction(float[] vectorAction, string textAction)
         {
-            CheckHP(() =>
+            if(transform.position.y <= DEAD_Y_POSITION)
             {
                 Done();
+                return;
+            }
+
+            CheckHP(onDead: () =>
+            {
+                Done();
+                return;
             });
 
             var actionType = ConvertIntToActionType((int)vectorAction[0]);
@@ -87,10 +94,12 @@ namespace CCG
 
             AddVectorObs(RayPerception.Perceive(rayDistance, rayAngles
                                                 , detectableObjects, 0, 0));
+            AddVectorObs(transform.position);
         }
 
         public override void InitializeAgent()
         {
+            Rigidbody2D = GetComponent<Rigidbody2D>();
             RayPerception = GetComponent<RayPerception>();
         }
 
@@ -176,7 +185,7 @@ namespace CCG
         private void OnActionStateRightJump()
         {
             IsGrounded = false;
-            rigid2D.AddForce(new Vector2(2f, 6f), ForceMode2D.Impulse);
+            Rigidbody2D.AddForce(new Vector2(2f, 6f), ForceMode2D.Impulse);
             mainRenderer.flipX = true;
 
             AddReward(-0.001f);
@@ -187,7 +196,7 @@ namespace CCG
         private void OnActionStateLeftJump()
         {
             IsGrounded = false;
-            rigid2D.AddForce(new Vector2(-2f, 6f), ForceMode2D.Impulse);
+            Rigidbody2D.AddForce(new Vector2(-2f, 6f), ForceMode2D.Impulse);
             mainRenderer.flipX = false;
 
             AddReward(-0.001f);
@@ -226,7 +235,7 @@ namespace CCG
 
         private void CheckIsGrounded()
         {
-            IsGrounded = rigid2D.IsTouching(groundContact);
+            IsGrounded = Rigidbody2D.IsTouching(groundContact);
         }
         #endregion
     }
