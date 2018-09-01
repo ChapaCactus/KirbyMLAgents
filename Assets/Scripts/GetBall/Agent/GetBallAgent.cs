@@ -20,10 +20,10 @@ namespace CCG
         private const int SMALL_GOAL_POSITION = -7;
         private const int BIG_GOAL_POSITION = 7;
         // 各ゴールの報酬
-        private const float SMALL_GOAL_REWARD = 0.1f;
-        private const float BIG_GOAL_REWARD = 1.0f;
+        private const float SMALL_GOAL_REWARD = 1f;
+        private const float BIG_GOAL_REWARD = 2f;
 
-        private const float DECISION_INTERVAL = 0.35f;
+        private const float DECISION_INTERVAL = 0.25f;
         #endregion
 
         #region variables
@@ -56,30 +56,37 @@ namespace CCG
         public override void AgentAction(float[] vectorAction, string textAction)
         {
             var actionIndex = (int)vectorAction[0];
+            if (actionIndex <= -1)
+                return;
 
             position += moves[actionIndex].Value;
             if (position < MOVE_MIN_POSITION) { position = MOVE_MIN_POSITION; }
             if (position > MOVE_MAX_POSITION) { position = MOVE_MAX_POSITION; }
+            Debug.Log(position);
 
             cachedTransform.position = new Vector2(position, cachedTransform.position.y);
 
             if (position == SMALL_GOAL_POSITION)
             {
                 // 小ゴール衝突
-                Done();
                 AddReward(SMALL_GOAL_REWARD);
+                Done();
             }
             else if (position == BIG_GOAL_POSITION)
             {
                 // 大ゴール衝突
-                Done();
                 AddReward(BIG_GOAL_REWARD);
+                Done();
             }
             else
             {
                 // 衝突無し
                 AddReward(-0.01f);
             }
+        }
+
+        public override void AgentOnDone()
+        {
         }
 
         public override void InitializeAgent()
