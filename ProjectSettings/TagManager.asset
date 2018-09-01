@@ -8,6 +8,15 @@ TagManager:
   - Block
   - Goal
   - Enemy
+  - agent
+  - wall
+  - block
+  - walkableSurface
+  - goal
+  - ground
+  - target
+  - pit
+  - iWall
   layers:
   - Default
   - TransparentFX
@@ -44,4 +53,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Ground
+    uniqueID: 754919193
+    locked: 0
+  - name: Character
+    uniqueID: 2694296073
     locked: 0
