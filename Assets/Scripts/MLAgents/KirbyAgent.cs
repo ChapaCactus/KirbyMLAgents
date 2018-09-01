@@ -46,7 +46,6 @@ namespace CCG
 
         public DirectionType Direction { get; private set; }
 
-        public float JumpCooltime { get; private set; }
         public bool IsGrounded { get; private set; }
 
         private Rigidbody2D Rigidbody2D { get; set; }
@@ -85,7 +84,6 @@ namespace CCG
         {
             HP = 1;
             IsGrounded = false;
-            JumpCooltime = 0;
             transform.position = Vector2.zero;
         }
 
@@ -132,30 +130,18 @@ namespace CCG
                     break;
 
                 case ActionType.RightJump:
-                    if (JumpCooltime <= 0)
+                    if (IsGrounded)
                     {
                         OnActionStateRightJump();
                     }
-                    else
-                    {
-                        // ジャンプ出来なければ、移動を行う
-                        OnActionStateRightMove();
-                    }
                     break;
                 case ActionType.LeftJump:
-                    if (JumpCooltime <= 0)
+                    if (IsGrounded)
                     {
                         OnActionStateLeftJump();
                     }
-                    else
-                    {
-                        // ジャンプ出来なければ、移動を行う
-                        OnActionStateLeftMove();
-                    }
                     break;
             }
-
-            JumpCooltime -= 0.01f;
         }
 
         private void OnActionStateNone()
@@ -217,7 +203,6 @@ namespace CCG
 
         private void OnJump()
         {
-            JumpCooltime = 3f;
         }
 
         /// <summary>
@@ -238,7 +223,14 @@ namespace CCG
 
         private void CheckIsGrounded()
         {
+            var cache = IsGrounded;
             IsGrounded = Rigidbody2D.IsTouching(groundContact);
+
+            if(!cache && IsGrounded)
+            {
+                // 着地した瞬間なので加速度を切る
+                Rigidbody2D.velocity = Vector2.zero;
+            }
         }
         #endregion
     }
